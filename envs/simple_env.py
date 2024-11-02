@@ -1,4 +1,4 @@
-from gym import spaces
+from gymnasium import spaces
 from evogym import EvoWorld
 from evogym.envs import EvoGymBase
 
@@ -12,7 +12,7 @@ class SimpleWalkerEnvClass(EvoGymBase):
     }
     
     def __init__(self, body, connections=None, render_mode=None):
-        self.world = EvoWorld.from_json(os.path.join('world_data', 'simple_walker_env.json'))
+        self.world = EvoWorld.from_json(os.path.join('Final/world_data', 'simple_walker_env.json'))
         self.world.add_from_array('robot', body, 1, 1, connections=connections)
         EvoGymBase.__init__(self, self.world)
 

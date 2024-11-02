@@ -1,8 +1,8 @@
-from envs.simple_env import SimpleWalkerEnvClass
-from gym.envs.registration import register
+from Final.envs.simple_env import SimpleWalkerEnvClass
+from gymnasium.envs.registration import register
 
 register(
-    id = 'SimpleWalkingEnv-v0',
-    entry_point = 'envs.simple_env:SimpleWalkerEnvClass',
-    max_episode_steps = 500
+    id="SimpleWalkerEnv-v0",
+    entry_point="Final.envs.simple_env:SimpleWalkerEnvClass",
+    max_episode_steps=500
 )
