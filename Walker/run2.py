@@ -236,7 +236,7 @@ def batch_train_robots(robot_list, args, model_save_dir, structure_save_dir, sha
                     env_name=args.env_name,
                     model_save_dir=model_save_dir,
                     model_save_name=save_name,
-                    shared_policy=shared_policy  # Pass shared policy to run_ppo
+                    shared_policy=shared_policy  
                 )
                 break
             except Exception as e:
@@ -325,7 +325,7 @@ def evolve(args):
             best_model_save_name = f"robot_{best_location[0]}_{best_location[1]}"
             best_model_path = os.path.join(save_dir, best_model_save_name)
             best_model = PPO.load(best_model_path)
-            best_model.save(shared_policy_path)  # Save the shared policy explicitly
+            best_model.save(shared_policy_path)  
             shared_policy = shared_policy_path
 
         gen_data['metrics'] = {
