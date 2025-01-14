@@ -23,19 +23,19 @@ import random
 
 # ----- Configuration -----
 VOXEL_GRID_SIZE = (5, 5)
-MAP_RESOLUTION = 5
+MAP_RESOLUTION = 3
 MAX_MAP_RESOLUTION = 20
 GEN_RESOLUTION_INC = 5
 GENERATIONS = 10
-POPULATION_SIZE = 25
-TOP_N_SURVIVE = 5
+POPULATION_SIZE = 50
+TOP_N_SURVIVE = 8
 SIMULATION_TIME = 5
 
-MUTATION_RATE = 0.3
-CROSSOVER_RATE = 0.5
+MUTATION_RATE = 0.15
+CROSSOVER_RATE = 0.3
 
 EARLY_STOPPING_THRESHOLD = 1e-3
-DIVERSITY_THRESHOLD = 0.05
+DIVERSITY_THRESHOLD = 0.1
 NO_IMPROVEMENT_LIMIT = 5
 
 RETRY_LIMIT = 3
@@ -106,7 +106,8 @@ def mutate_robot(robot, fitness_gradient=None):
             }.get(voxel_type, 0.2)
             
             if fitness_gradient is not None:
-                mutation_rate *= (1 - fitness_gradient[x, y])  
+                scaled_gradient = fitness_gradient * 0.5 
+                mutation_rate *= (1 - scaled_gradient[x, y])
             if random.random() < mutation_rate:
                 mutated[x, y] = random.choice([0, 1, 2, 3, 4]) 
     
