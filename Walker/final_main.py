@@ -82,8 +82,6 @@ def crossover_robots(robot_a, robot_b):
         flat_a = robot_a.flatten()
         flat_b = robot_b.flatten()
         new_robot = np.zeros_like(flat_a)
-
-        # Multi-point crossover
         points = sorted(random.sample(range(robot_a.size), k=3))
         start = 0
         for i, point in enumerate(points + [robot_a.size]):
@@ -190,7 +188,7 @@ def save_generation_data(map_grid, generation, save_dir):
                 archive[(i, j)] = {
                     'fitness': map_grid[i, j]['fitness'],
                     'features': map_grid[i, j]['features'],
-                    'robot': map_grid[i, j]['robot'].tolist()  # Convert numpy array to list for JSON
+                    'robot': map_grid[i, j]['robot'].tolist()  
                 }
 
     # Add additional metrics
@@ -227,10 +225,7 @@ def evolve(args):
             best_robot, _, _ = results[best_robot_idx]
             shared_policy = update_shared_policy(shared_policy, best_robot, args, save_dir)
 
-        # Save JSON data for the current generation
         save_generation_data(map_grid, gen + 1, save_dir)
-
-        # Evolve the population for the next generation
         population = evolve_population(map_grid)
 
 if __name__ == "__main__":
