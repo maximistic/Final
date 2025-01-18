@@ -82,6 +82,8 @@ def crossover_robots(robot_a, robot_b):
         flat_a = robot_a.flatten()
         flat_b = robot_b.flatten()
         new_robot = np.zeros_like(flat_a)
+
+        # Multi-point crossover
         points = sorted(random.sample(range(robot_a.size), k=3))
         start = 0
         for i, point in enumerate(points + [robot_a.size]):
@@ -188,7 +190,7 @@ def save_generation_data(map_grid, generation, save_dir):
                 archive[(i, j)] = {
                     'fitness': map_grid[i, j]['fitness'],
                     'features': map_grid[i, j]['features'],
-                    'robot': map_grid[i, j]['robot'].tolist()  
+                    'robot': map_grid[i, j]['robot'].tolist()  # Convert numpy array to list for JSON
                 }
 
     # Add additional metrics
