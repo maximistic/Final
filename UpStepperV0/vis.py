@@ -5,7 +5,6 @@ from evogym import EvoSim, EvoWorld
 import evogym.envs
 from ppo.eval import eval_policy
 
-
 def visualize_robot(robot_path, model_path, env_name="UpStepper-v0"):
     """Visualize a single robot using its trained model."""
     if not os.path.exists(robot_path):
@@ -29,7 +28,6 @@ def visualize_robot(robot_path, model_path, env_name="UpStepper-v0"):
         render_mode="human",
     )
 
-
 def main(exp_dir, env_name="UpStepper-v0"):
     """Simulate all robots in the specified directory."""
     files = [f for f in os.listdir(exp_dir) if f.endswith(".npz")]
@@ -46,5 +44,5 @@ def main(exp_dir, env_name="UpStepper-v0"):
 
 
 if __name__ == "__main__":
-    exp_dir = "draft_guide1"  # Adjust this path as needed to your experiment directory
+    exp_dir = "draft_guide1"
     main(exp_dir)
